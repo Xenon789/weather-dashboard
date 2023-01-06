@@ -1,40 +1,40 @@
-const apikey = '9bb815e8d4c56140532ebbf65f799e59';
-var currentWeather = document.getElementById('#current-weather')
-var searchHistory = document.getElementById('search-history')
-var searchHistoryArray = JSON.parse(localStorage.getItem('historyArray'))||[]
+const apikey = '73d30d7d6302441d5c6379126dc6fab7';
+var currentWeather = document.getElementById('#current-weather');
+var searchHistory = document.getElementById('search-history');
+var searchHistoryArray = JSON.parse(localStorage.getItem('historyArray'))||[];
 
 
 //adds the search button history
 for(var i = 0; i < searchHistoryArray.length; i++){
-    var searchBtn = $('<button>').addClass('btn btn-success').text(searchHistoryArray[i])
-    $('#search-history').append(searchBtn)
+    var cityBtn = $('<button>').addClass('btn btn-success').text(searchHistoryArray[i]);
+    $('#search-history').append(cityBtn);
 }
 
 
 //clears local storage and sets the search history as an empty string
 $('#clear').on('click', function(){
     localStorage.clear()
-    searchHistory.innerHTML = ''
+    searchHistory.innerHTML = '';
 })
 
 
 //pushs the search input into local storage
-$('#searchbutton').on('click', function(){
-    var searchvalue = $("#search-input").val()
-    var searchBtn = $('<button>').addClass('btn').text(searchvalue)
-    searchHistoryArray.push(searchvalue)
-    localStorage.setItem('historyArray',JSON.stringify(searchHistoryArray))
-    $('#search-history').append(searchBtn)
-    geocode(searchvalue)
+$('#search-button').on('click', function(){
+    var searchvalue = $("#search-input").val();
+    var searchBtn = $('<button>').addClass('btn').text(searchvalue);
+    searchHistoryArray.push(searchvalue);
+    localStorage.setItem('historyArray',JSON.stringify(searchHistoryArray));
+    $('#search-history').append(searchBtn);
+    geocode(searchvalue);
 
-//uses users search to call the api for their location
-function geocode(searchinput){
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchinput}&limit=5&appid=${apikey}`)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data)
-        currentWeather(data[0].lat,data[0].lon)
-    })
+    //uses users search to call the api for their location
+    function geocode(searchinput){
+        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchinput}&limit=5&appid=${apikey}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            currentWeather(data[0].lat,data[0].lon);
+        });
 }
 
 
@@ -43,11 +43,11 @@ function currentWeather(lat,lon){
     fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=imperial`)
     .then(response => response.json())
     .then(data => {
-        console.log(data)
-        $('#current-container').empty()
-       var currentWeather = document.createElement('div');
-       currentWeather.setAttribute('id', 'current-weather');
-       $('#current-container').append(currentWeather);
+        console.log(data);
+        $('#current-container').empty();
+        var currentWeather = document.createElement('div');
+        currentWeather.setAttribute('id', 'current-weather');
+        $('#current-container').append(currentWeather);
         var mainCard = $('<div>').addClass('card');
         var cityName = $('<h1>').text('City: ' + data.name);
         var temp = $('<h1>').text('Temp: ' + data.main.temp);
@@ -76,7 +76,7 @@ function getforecast(lat,lon){
         var day4 = data.list[29];
         var day5 = data.list[37];
         var daysarray = [day1, day2, day3, day4, day5];
-        console.log(daysarray)
+        console.log(daysarray);
         for (let i = 0; i < daysarray.length; i++){
             var daydata = daysarray[i].main;
             var temp = $('<h1>').text('Temp: ' + daydata.temp);
