@@ -1,0 +1,74 @@
+body {
+    background-color: white;
+}
+
+.navbar {
+    color: white;
+    background: linear-gradient(116deg, #8093ff, #201628);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: x-large;
+    justify-content: center;
+}
+
+.list-group {
+    display: inline-flex;
+}
+
+h1 {
+    font-size: 34px;
+}
+
+#current-weather {
+    border: solid 2px black;
+    border-radius: 15px;
+    background: white;
+}
+
+#search-history {
+    display: flex;
+    flex-direction: column;
+}
+
+#search-button {
+    margin-bottom: 20%;
+}
+
+.search-form {
+    background: white;
+}
+
+.search-input {
+    border-bottom: solid 1px gray;
+}
+
+.button {
+    color: azure;
+    background: #8093ff;
+    border: solid 0.5px black;
+    border-radius: 10px;
+}
+
+.btn {
+    background: aqua;
+    color: white;
+    font-size: x-large;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.forecast {
+    display: flex;
+}
+
+.forecast > * {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    border-radius: 15px;
+    border: solid 2px black;
+}
