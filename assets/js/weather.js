@@ -29,7 +29,7 @@ $('#search-button').on('click', function(){
 
     //uses users search to call the api for their location
     function geocode(searchinput){
-        fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${searchinput}&limit=5&appid=${apikey}`)
+        fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${searchinput}&limit=5&appid=${apikey}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
@@ -40,7 +40,7 @@ $('#search-button').on('click', function(){
 
 //creates the current weather section
 function currentWeather(lat,lon){
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=imperial`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apikey}&units=imperial`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
@@ -66,7 +66,7 @@ function currentWeather(lat,lon){
 
 //creates 5 day weather forcast section
 function getforecast(lat,lon){
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apikey}&units=imperial`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apikey}&units=imperial`)
     .then(response => response.json())
     .then(data => {
         console.log('data', data);
